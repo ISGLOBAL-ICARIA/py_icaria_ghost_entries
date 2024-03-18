@@ -32,11 +32,15 @@ def define_ghost_records():
     ghost_entries = ghost_entries.drop_duplicates()
     file_to_drive(tokens.ghost_drive_worksheet_name,ghost_entries,
                   tokens.ghost_drive_filename,tokens.ghost_drive_folder,
-                  index_included=False)
+                  index_included=False, deleting=True)
     print("\n\nScript Completed on "+ str(datetime.today()))
 
 
-def file_to_drive(worksheet,df,drive_file_name,folder_id,index_included=True):
+def file_to_drive(worksheet,df,drive_file_name,folder_id,index_included=True,deleting=False):
     gc = gspread.oauth(tokens.path_credentials)
     sh = gc.open(title=drive_file_name,folder_id=folder_id)
+    if deleting:
+        actual_worksheet = sh.worksheet(worksheet)
+        actual_worksheet.clear()
     set_with_dataframe(sh.worksheet(worksheet), df,include_index=index_included)
+
