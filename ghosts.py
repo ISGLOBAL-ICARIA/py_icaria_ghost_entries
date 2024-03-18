@@ -13,7 +13,7 @@ def define_ghost_records():
         print(token)
         project = redcap.Project(tokens.URL,tokens.REDCAP_PROJECTS_ICARIA[token])
 
-        df = project.export_records(format='df',fields=['study_number'],events=['epipenta1_v0_recru_arm_1'])
+        df = project.export_records(format='df',fields=['study_number'])
 
         record_ids = list(df.reset_index()['record_id'])
         c=4
@@ -29,10 +29,10 @@ def define_ghost_records():
             count += 1
 
     ghost_entries.loc[g] = str(datetime.today()),'',''
+    ghost_entries = ghost_entries.drop_duplicates()
     file_to_drive(tokens.ghost_drive_worksheet_name,ghost_entries,
                   tokens.ghost_drive_filename,tokens.ghost_drive_folder,
                   index_included=False)
-
     print("\n\nScript Completed on "+ str(datetime.today()))
 
 
