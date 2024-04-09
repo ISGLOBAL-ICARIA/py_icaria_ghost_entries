@@ -13,9 +13,11 @@ def define_ghost_records():
         print(token)
         project = redcap.Project(tokens.URL,tokens.REDCAP_PROJECTS_ICARIA[token])
 
-        df = project.export_records(format='df',fields=['study_number'])
-
-        record_ids = list(df.reset_index()['record_id'])
+        df = project.export_records(format='df',forms=params.all_forms_redcap,fields=['record_id'])
+        study_numbers_df = project.export_records(format='df',fields=['study_number'])
+        dfres = df.reset_index()
+        record_ids = list(df.reset_index()['record_id'].unique())
+        #print(df[df.index.get_level_values('redcap_event_name')=='epipenta1_v0_recru_arm_1']['study_number'])
         c=4
         if token in params.prefix_three:
             c = 3
@@ -23,9 +25,15 @@ def define_ghost_records():
         count = 0
         for prefix in prefix_records:
             if prefix != params.dict_prefixes[token]:
-                ghost_entries.loc[g] = token,record_ids[count],df['study_number'][record_ids[count]].values[0]
+                if len(df[(df.index.get_level_values('redcap_event_name') == 'epipenta1_v0_recru_arm_1')&
+                         (df.index.get_level_values('record_id') == record_ids[count])]['study_number'].values) == 0:
+                    study_number = ''
+                else:
+                    study_number = df[(df.index.get_level_values('redcap_event_name') == 'epipenta1_v0_recru_arm_1')&
+                                      (df.index.get_level_values('record_id') == record_ids[count])]['study_number'].values[0]
+                ghost_entries.loc[g] = token,record_ids[count],study_number
                 g+= 1
-                print("\t",record_ids[count],df['study_number'][record_ids[count]].values[0])
+                print("\t",record_ids[count],study_number)
             count += 1
 
     ghost_entries.loc[g] = str(datetime.today()),'',''
