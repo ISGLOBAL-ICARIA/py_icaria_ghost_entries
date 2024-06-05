@@ -1,3 +1,17 @@
+all_forms_redcap = [
+    'screening','id','vaccination_history','clinical_history' ,'unscheduled',
+    'household_follow_up','mortality_surveillance','drug_reaction','intervention',
+    'socioeconomics','noncompliant','migration','unscheduled','ae','sae',
+    'withdrawal', 'death', 'cohort_clinical_history', 'cohort_tests', 'vacc_card',
+    'macrolide_resistance_baseline','macrolide_resistance_t2',
+    'macrolide_resistance_t3', 'azi_interactions_with_epi_vaccines'
+]
+
+prefix_three = [
+    "HF01.01","HF01.02","HF01.03","HF02.01","HF02.02","HF03","HF04.01",
+    "HF04.02","HF05.01","HF05.02","HF06","HF08.01","HF08.02","HF08.03","HF08.04"
+]
+
 dict_prefixes = {
     "HF01.01":"101",
     "HF01.02":"102",
@@ -30,28 +44,3 @@ dict_prefixes = {
     "HF17.01":"1701",
     "HF17.02":"1702"
 }
-
-all_forms_redcap = [
-    'screening','id','vaccination_history','clinical_history' ,'unscheduled',
-    'household_follow_up','mortality_surveillance','drug_reaction','intervention',
-    'socioeconomics','noncompliant','migration','unscheduled','ae','sae',
-    'withdrawal', 'death', 'cohort_clinical_history', 'cohort_tests', 'vacc_card',
-    'macrolide_resistance_baseline','macrolide_resistance_t2',
-    'macrolide_resistance_t3', 'azi_interactions_with_epi_vaccines'
-]
-
-all_events_redcap = [
-    'epipenta1_v0_recru_arm_1','epipenta2_v1_iptis_arm_1','epipenta3_v2_iptis_arm_1',
-    'epivita_v3_iptisp3_arm_1','epimvr1_v4_iptisp4_arm_1','epivita_v5_iptisp5_arm_1',
-    'epimvr2_v6_iptisp6_arm_1','hhafter_1st_dose_o_arm_1','hhafter_2nd_dose_o_arm_1',
-    'hhafter_3rd_dose_o_arm_1','cohort_after_mrv_2_arm_1','hhat_18th_month_of_arm_1',
-    'after_1_month_from_arm_1','after_1_month_from_arm_1b','after_1_month_from_arm_1c',
-    'after_1_month_from_arm_1d','after_1_month_from_arm_1e','adverse_events_arm_1',
-    'out_of_schedule_arm_1','end_of_fu_arm_1','vacc_card_test_arm_1'
-]
-
-prefix_three = [
-    "HF01.01","HF01.02","HF01.03","HF02.01","HF02.02","HF03","HF04.01",
-    "HF04.02","HF05.01","HF05.02","HF06","HF08.01","HF08.02","HF08.03","HF08.04"
-]
-

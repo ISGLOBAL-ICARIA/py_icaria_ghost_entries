@@ -13,9 +13,7 @@ def define_ghost_records():
         print(token)
         project = redcap.Project(tokens.URL,tokens.REDCAP_PROJECTS_ICARIA[token])
 
-        df = project.export_records(format='df',forms=params.all_forms_redcap,fields=['record_id'])
-        study_numbers_df = project.export_records(format='df',fields=['study_number'])
-        dfres = df.reset_index()
+        df = project.export_records(format='df',forms=params.all_forms_redcap,fields=['record_id','study_number'])
         record_ids = list(df.reset_index()['record_id'].unique())
         #print(df[df.index.get_level_values('redcap_event_name')=='epipenta1_v0_recru_arm_1']['study_number'])
         c=4

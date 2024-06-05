@@ -5,7 +5,7 @@ Part of the ICARIA Clinical Trial"""
 import ghosts
 
 __author__ = "Andreu Bofill Pumarola"
-__copyright__ = "Copyright 2023, ISGlobal Maternal, Child and Reproductive Health"
+__copyright__ = "Copyright 2024, ISGlobal Maternal, Child and Reproductive Health"
 __credits__ = ["Andreu Bofill Pumarola"]
 __license__ = "MIT"
 __version__ = "0.0.1"
